@@ -4,7 +4,7 @@ Base CSS & graphics for all Bivee-branded sites.
 
 ## Installation
 
-Eventually this will be an NPM module that you can install and build, but in the meantime just clone or download this repository into your project folder.
+Eventually this will be an NPM module that you can install and build, but in the meantime just download this repository into your project folder.
 
 This "kit" includes base CSS (as Sass files), JS templates, our brand fonts (Aspira and Galaxie Copernicus), and evergreen graphics (icons, logos, etc. in web-optimized formats). 
 
