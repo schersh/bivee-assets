@@ -23,49 +23,44 @@ Inline text is mostly styled globally and doesn't change a whole lot from one co
 // -------------------------------------------------------------------------- */
 
 body {
-    @extend %font-body;
+    @include font-body;
     line-height: $type-line_height;
 }
 
 p {
     @include font-scale(2);
-
-    strong {
-        font-weight: bold;
-    }
+    @include color('text' 'secondary');
 }
 
 a {
+    @include color('highlight');
     text-decoration: none;
 }
 
-strong {
+strong, .t-strong { @include font-body(bold); }
 
-}
+em, .t-em { @include font-body(normal, italic); }
 
-small {
+small, .t-small {
     @include font-scale(1);
+    @include color('text' 'tertiary');
 }
 
-figcaption {
-
+figcaption, .t-caption {
+    @include font-scale(1);
+    @include color('text' 'secondary');
 }
 
-address {
-
+address, .t-address {
+    @include font-scale(2);
+    @include color('text' 'secondary');
 }
 
-/* Helpers
+/* Utilities
 // -------------------------------------------------------------------------- */
 
 // the first paragraph, often set slightly bigger
-.lead, .content > p:first-of-type {
+.t-lead {
     @include font-scale(3);
-}
-
-// a caption
-.caption, figcaption {
-    @extend %font-body;
-    @include font-scale(1);
-    color: theme(text--secondary);
+    @include color('text' 'primary');
 }

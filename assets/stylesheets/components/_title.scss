@@ -19,10 +19,10 @@ category: Atoms
 
 // a primary heading for content
 .title {
-    // @extend %font-display;
+    // @include font-display;
     display: block;
     margin: 0.5em 0;
-    color: theme(text-primary);
+    @include color('text' 'primary');
 }
 
 /* Modifiers
@@ -30,20 +30,17 @@ category: Atoms
 
 // a subtitle, or secondary heading
 .title-sub {
-    @extend %font-accent;
+    @include font-display;
     display: block;
-    margin: 0.5em 0;
-    color: theme(text secondary);
-    margin-top: 0.2em;
+    margin: 0.2em 0.5em 0;
+    @include color('text' 'secondary');
 
-    .title + & { margin-top: 0; }
-
-    strong { color: theme('text' 'primary'); }
+    strong { @include color('text' 'primary'); }
 }
 
 // make a heading a secondary label, a "meta header"
 .title-slug {
-    @extend %font-accent--bold;
+    @include font-display(bold);
     text-transform: uppercase;
     color: lighten(theme('text' 'primary'), 10);
 }

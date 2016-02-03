@@ -109,12 +109,48 @@ $themes: (
 
 }
 
-// @debug theme('text' 'primary', 'reverse');
+// @debug(type-of('text' 'primary'));
 
-// Theme Globals
+// Theme Helpers & Accessors
 // ----------------------------------------------------------------------
 // -> set up helper classes and base colors
 
+// "get" function to access theme map values
+// -> PUBLIC
+// -> USAGE:
+//      color: theme('text' 'primary');
+//      color: theme('highlight', 'reverse');
+@function theme($colors, $name: 'default') {
+    $map: map-get($themes, $name);
+
+    @each $color in $colors {
+        $map: map-get($map, $color);
+    }
+
+    @return $map;
+
+}
+
+// add colors for each theme
+// -> PUBLIC
+// -> USAGE:
+//      @include color(text primary, background-color);
+@mixin color($color, $attr: color) {
+    #{$attr}: theme($color);
+
+    // set the color of this element to match the theme of this context
+    @each $theme, $colors in $themes {
+        // @debug($theme);
+        @if $theme != "default" {
+            // set color to theme of either this element or its parent
+            &.c-theme-#{$theme}, .c-theme-#{$theme} & {
+                #{$attr}: theme(#{$color}, #{$theme});
+            }
+        }
+    }
+}
+
+// add a color theme to a module/container
 @mixin theme($theme) {
     color: theme('text' 'secondary', $theme);
     background-color: theme('bg', $theme);
@@ -122,38 +158,52 @@ $themes: (
 
     // highlight color when you select something
     ::selection {
-        color: theme(bg, $theme);
-        background: theme('highlight', $theme);
-        text-shadow: none;
+      background: theme('highlight', $theme);
+      color: white;
+      text-shadow: none;
     }
 
     // ditto, for mozilla engine
     ::-moz-selection {
-        color: theme(bg, $theme);
-        background: theme('highlight', $theme);
-        text-shadow: none;
+      background: theme('highlight', $theme);
+      color: white;
+      text-shadow: none;
     }
 
     // helper classes
-    .well { background: theme('well', $theme); }
+    .well { background-color: theme('well', $theme); }
 
     .highlight { color: theme('highlight', $theme); }
 }
 
 /* Themes
-// -> @extend these to apply a theme to a module
+// -> use on containers to apply a theme
 // -------------------------------------------------------------------------- */
-body {
+body, .c-theme-default {
     @include theme('default');
 }
 
-%theme--reverse {
-    @include theme('reverse');
+// create utility classes for each color theme from the $themes map
+// e.g. ".c-theme-reverse" and ".c-theme-wash"
+@each $theme, $colors in $themes {
+    @if $theme != "default" {
+        .c-theme-#{$theme} { @include theme('#{$theme}'); }
+    }
 }
 
-// make an element the highlight color
-.highlight {
-    color: theme(highlight);
+/* Color classes
+// -> use on individual elements to apply color treatment
+// -------------------------------------------------------------------------- */
 
-    > a { color: inherit; }
-}
+.c-text-primary { @include color('text' 'primary'); }
+.c-text-secondary { @include color('text' 'secondary'); }
+.c-text-tertiary { @include color('text' 'tertiary'); }
+
+.c-highlight { @include color('highlight'); }
+.c-highlight-bg { @include color('highlight', 'background-color'); }
+
+// .c-accent { @include color('accent'); }
+// .c-accent-bg { @include color('accent', 'background-color'); }
+
+.c-well { @include color('well'); }
+.c-well-bg { @include color('well', 'background-color'); }

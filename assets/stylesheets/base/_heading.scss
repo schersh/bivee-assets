@@ -39,9 +39,9 @@ Many modules (like `media-box`, `profile`, etc.) define their own special headin
 // @import "../core/*";
 
 %heading-defaults {
+    @include font-display;
+    @include color('text' 'primary');
     line-height: 1.2;
-    margin: 0;
-    color: theme('text' 'primary');
 
     a { color: inherit; }
 
@@ -56,32 +56,32 @@ Many modules (like `media-box`, `profile`, etc.) define their own special headin
 /* Globals
 // -------------------------------------------------------------------------- */
 
-h1, .alpha, %alpha {
+h1, .h-alpha {
     @extend %heading-defaults;
     @include font-scale(6);
 }
 
-h2, .beta, %beta {
+h2, .h-beta {
     @extend %heading-defaults;
     @include font-scale(5);
 }
 
-h3, .cappa, %cappa {
+h3, .h-cappa {
     @extend %heading-defaults;
     @include font-scale(4);
 }
 
-h4, .delta, %delta {
+h4, .h-delta {
     @extend %heading-defaults;
     @include font-scale(3);
 }
 
-h5, .epsilon, %epsilon {
+h5, .h-epsilon {
     @extend %heading-defaults;
     @include font-scale(2);
 }
 
-h6, .zeta, %zeta {
+h6, .h-zeta {
     @extend %heading-defaults;
     @include font-scale(1);
 }

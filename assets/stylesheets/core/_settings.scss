@@ -6,18 +6,19 @@
 ---
 title: Global Variables
 name: settings
-category: core
+category: Core
 ---
 
 We keep global settings to a minimum, to keep variables closely tied to the relevant modules/libraries.
 
-Right now, the only globals we need are a few file path helpers: `$path-images`, `$path-icons`, and `$path-fonts`.
+Right now, the only globals we need are a few file path helpers: `$asset-path-images`, `$asset-path-icons`, and `$asset-path-fonts`.
 
 */
 
 // Asset paths
-// ----------------------------------------------------------------------
-$path-images: "/assets/images";
-$path-icons: "#{$path-images}/icons";
-$path-fonts: "/assets/fonts";
+// -----------------------------------------------------------------------------
+$asset-path: "/assets";
+$asset-path-images: "#{$asset-path}/images";
+$asset-path-icons: "#{$asset-path-images}/icons";
+$asset-path-fonts: "#{$asset-path}/fonts";
 
