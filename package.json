@@ -11,7 +11,6 @@
   },
   "scripts": {
     "modernizr": "cd $npm_package_config_js_src/vendor && modernizr -c modernizr.config.json",
-    "postmodernizr": "npm run javascripts:build",
     "javascripts:build": "webpack --bail --",
     "javascripts:watch": "webpack --watch -d --",
     "styles:sass": "node-sass $npm_package_config_css_src/*.scss -o $npm_package_config_css_bundle --include-path node_modules",
@@ -20,6 +19,7 @@
     "styles:watch": "npm run styles:sass -- -w",
     "reload": "browser-sync start --no-open --server --files '**/*.css, **/*.html, **/*.js'",
     "build": "npm run javascripts:build && npm run styles:build",
+    "start": "npm run modernizr && npm run build",
     "dev": "npm run build && parallelshell 'npm run styles:watch' 'npm run javascripts:watch' 'npm run reload'",
     "deploy": "npm run build && git-directory-deploy --directory build --branch gh-pages"
   },
