@@ -14,7 +14,8 @@ Additionally, it includes a build workflow based on NPM scripts and Webpack whic
 
 1. Once you've downloaded this repo, run `npm run start`. This will build [Modernizr](https://modernizr.com), set up the Javascript bundles, and compile the Sass.
 2. Now set up your `index.html` (or whatever templates you'd like to use for the entry page) in the project root. In the `head`, add links for `assets/javascripts/critical.bundle.js` and `assets/stylesheets/main.css`. At the bottom of the `body` tag, add a link for `assets/javascripts/bundle.js` (this is the 'non critical' JS that can loaded after everything else, like jQuery).
-2. Now do `npm run dev`. This will set up a local server at `localhost:3000`. You should see your index.html page in all its glory. Sass and Javascript will automatically recompile when you save. [Browsersync](https://browsersync.io) will reload the browser each time a file changes (and it can also sync other devices, like your phone's browser, if you'd like).
+3. Now do `npm run dev`. This will set up a local server at `localhost:3000`. You should see your index.html page in all its glory. Sass and Javascript will automatically recompile when you save. [Browsersync](https://browsersync.io) will reload the browser each time a file changes (and it can also sync other devices, like your phone's browser, if you'd like).
+4. To compile once (for instance, if you wanted to push to production), just run `npm run build`.
 
 ### Configuration
 
