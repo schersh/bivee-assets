@@ -6,8 +6,7 @@
   "config": {
     "css_src": "assets/stylesheets",
     "css_bundle": "assets/stylesheets",
-    "js_src": "assets/javascripts/",
-    "js_bundle": "assets/javascripts"
+    "js_src": "assets/javascripts/"
   },
   "scripts": {
     "modernizr": "cd $npm_package_config_js_src/vendor && modernizr -c modernizr.config.json",
