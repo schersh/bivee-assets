@@ -23,13 +23,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/biveeco/bvSite.git"
+    "url": "git+https://github.com/biveeco/bivee-assets.git"
   },
   "author": "Bivee, Inc.",
   "bugs": {
-    "url": "https://github.com/biveeco/bvSite/issues"
+    "url": "https://github.com/biveeco/bivee-assets/issues"
   },
-  "homepage": "https://github.com/biveeco/bvSite#readme",
+  "homepage": "https://github.com/biveeco/bivee-assets#readme",
   "dependencies": {
     "SassyLists": "git+https://github.com/at-import/SassyLists.git",
     "bourbon": "^4.2.6",
