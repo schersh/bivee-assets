@@ -1,0 +1,89 @@
+/* =============================================================================
+// Grid layout classes
+// ===========================================================================*/
+
+// @import "libs";
+// @import "breakpoints";
+// @import "fonts";
+
+/*doc
+---
+title: Grids
+name: grids
+category: Layout
+---
+
+Grids
+
+```html_example
+<a href="#" class="button l-abs top right">Button @ top right</a>
+```
+
+*/
+
+/* Gutters
+// -------------------------------------------------------------------------- */
+
+$gutter: $l-margin; // local reference to global spacing -> see layout/spacing
+$gutter-outside: $l-margin--wide; // local reference to global spacing -> see layout/spacing
+
+@function add_outside_gutters($w) {
+    // compensate for outside margins (ie padding) and split gutters
+    @return ($w + ($gutter-outside * 2));
+}
+
+/* Grid columns
+// -------------------------------------------------------------------------- */
+
+// scale for ratio-based grids and/or type
+// -> http://alistapart.com/article/content-out-layout
+$grid-scale: 1 1.618 2.618 4.236 6.854 11.089 17.942 29.030 !default;
+
+@function ms($n) {
+    @return nth($grid-scale, $n);
+}
+
+$grid-default: ms(1) ms(4);
+
+@function column-w($loc, $grid: $grid-default) {
+    @return percentage(nth($grid, $loc)/sl-sum($grid));
+}
+
+// @PARAM (number) $loc: the column number where this element will live
+// @PARAM (list) $grid: the relative widths of columns in the grid
+// @PARAM (number) $gutter: width of the gutters b/n columns (note this uses split gutters)
+// @PARAM (boolean) $last_fill: should the last item expand to fill the remaining space? defaults to true.
+// -> requires SassyLists, Modernizr and modernizr-mixin libraries
+@mixin column($loc, $grid: $grid-default, $gutter: $gutter, $last_fill: true, $split: true) {
+    display: inline-block;
+    width: column-w($loc, $grid);
+
+    @if ($split == true) {
+        padding: 0 ($gutter/2);
+    } @else {
+        padding: 0 $gutter 0 0;
+    }
+
+    // adjust padding if this is the first or last element
+    &:first-child { padding-left: 0; }
+    &:last-child { padding-right: 0; }
+
+    // override inline block if flexbox is supported
+    @include yep(flexbox) {
+        display: block;
+
+        // if this is the last column, tell the element to fill the remaining space
+        // -> only works with flexbox. otherwise it just uses percentage width.
+        @if ($last_fill == true && $loc == length($grid)) {
+            width: auto;
+            flex: 1;
+        }
+    }
+}
+
+// A wrapper for
+@mixin column-wrapper($default: block) {
+    display: #{$default};
+    @include display(flex);
+    @include align-items(stretch);
+}

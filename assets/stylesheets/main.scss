@@ -19,8 +19,19 @@
 @import "core/animation"; // global animation/behaviors
 @import "core/fonts"; // all @font-face things and base type scale
 @import "core/color"; // global/base color schemes
-@import "core/layout"; // global layout styles/helpers
 @import "core/borders"; // global border styles
+
+/* /////////////////////////////////////////////////////////////////////////////
+// Layout utilities
+// -> global utility classes for basic layout
+///////////////////////////////////////////////////////////////////////////// */
+
+@import "layout/spacing";
+@import "layout/positioning";
+@import "layout/grid";
+@import "layout/wrapper";
+@import "layout/sidebar";
+@import "layout/visibility";
 
 /* /////////////////////////////////////////////////////////////////////////////
 // Base styles

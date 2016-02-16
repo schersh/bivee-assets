@@ -1,0 +1,120 @@
+/* =============================================================================
+// Sidebar layout classes
+// ========================================================================== */
+
+/*doc
+---
+title: Sidebar
+name: sidebar
+category: Layout
+---
+
+Sidebars
+
+```html_example
+<a href="#" class="button l-abs top right">Button @ top right</a>
+```
+
+*/
+
+// @import "libs";
+// @import "breakpoints";
+// @import "grid";
+
+/* Layout Width
+// -------------------------------------------------------------------------- */
+
+// $l-sidebar-grid: ms(1) ms(5) ms(1);
+$l-sidebar-breaks: 'medium', 'large';
+$l-sidebar-w: 250px;
+
+// create a 'floating' sidebar on either side of content
+// -> for elements contained IN the content who need to look as though
+//    they're part of the parent grid
+// @mixin l-child-sidebar($break: 'large', $side: right) {
+//     // calculate percentage widths of body and sidebars in existing grid
+//     $body-w: (nth($l-sidebar-grid, 2)/sl-sum($l-sidebar-grid)) * 100%;
+//     $sidebar-w: (nth($l-sidebar-grid, 3)/sl-sum($l-sidebar-grid)) * 100%;
+
+//     // calculate the percentage width of our child sidebar based on the parent context
+//     $width: ((nth($l-sidebar-grid, 3)/sl-sum($l-sidebar-grid)) * nested-context($body-w));
+
+//     // @if $side == right {
+//     //     $width: ($sidebar-w * nested-context($body-w) + ($gutter/$article-layout-w * 100%));
+//     // }
+
+//     clear: $side;
+//     margin-bottom: $gutter;
+
+//     @include media(>$break) {
+//         float: $side;
+//         margin-#{$side}: -($width);
+
+//         @if $side == right {
+//             padding-left: $gutter;
+//         } @else if $side == left {
+//             padding-right: $gutter;
+//         }
+
+//         width: $sidebar-w;
+//     }
+// }
+
+.l-has-sidebar {
+
+    @include media('>#{nth($l-sidebar-breaks, 1)}') {
+        // padding-right: column-w(3, $l-sidebar-grid);
+        padding-right: $l-sidebar-w;
+    }
+
+    @include media('>#{nth($l-sidebar-breaks, 2)}') {
+        // padding-left: column-w(1, $l-sidebar-grid);
+        padding-left: $l-sidebar-w;
+    }
+}
+
+// make an element float to the right of its parent
+.l-sidebar-left {
+
+    // 2 columns on medium screens
+    @include media('>#{nth($l-sidebar-breaks, 1)}') {
+        // position: absolute;
+        // @include l-child-sidebar(nth($l-sidebar-breaks, 1));
+        float: left;
+        clear: left;
+        width: $l-sidebar-w;
+        margin-left: -($l-sidebar-w);
+        margin-top: $gutter;
+        margin-right: 0;
+        padding-right: $gutter;
+        padding-left: $gutter;
+    }
+}
+
+// make an element float to the right of its parent
+.l-sidebar-right {
+
+    // 2 columns on medium screens
+    @include media('>#{nth($l-sidebar-breaks, 1)}') {
+        // position: absolute;
+        // @include l-child-sidebar(nth($l-sidebar-breaks, 1));
+        float: right;
+        clear: right;
+        width: $l-sidebar-w;
+        margin-right: -($l-sidebar-w);
+        margin-top: $gutter;
+        margin-left: 0;
+        padding-left: $gutter;
+        padding-right: $gutter;
+    }
+
+    // 3 columns on larger screens
+    // @include media('>#{nth($l-sidebar-breaks, 2)}') {
+    //     // position: absolute;
+    //     float: right;
+    //     clear: right;
+    //     width: column-w(2, $l-sidebar-grid);
+    //     margin-right: -100%;
+    //     padding-left: $gutter;
+    // }
+}
