@@ -52,7 +52,6 @@ There are also utility classes that allow you to quickly add a border to a conta
 
 // @import "libs";
 // @import "color";
-// @import "layout";
 
 // Rounded corners
 // -----------------------------------------------------------------------------
@@ -116,13 +115,11 @@ $border-sides: top right bottom left;
 
 .border {
     @include border;
-    padding: $gutter;
 }
 
 @each $side in $border-sides {
     .border-#{$side} {
         @include border($side);
-        padding-#{$side}: $gutter;
     }
 }
 

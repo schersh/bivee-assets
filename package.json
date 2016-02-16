@@ -12,7 +12,7 @@
     "modernizr": "cd $npm_package_config_js_src/vendor && modernizr -c modernizr.config.json",
     "javascripts:build": "webpack --bail --",
     "javascripts:watch": "webpack --watch -d --",
-    "styles:sass": "node-sass $npm_package_config_css_src/*.scss -o $npm_package_config_css_bundle --include-path node_modules",
+    "styles:sass": "node-sass $npm_package_config_css_src/*.scss -o $npm_package_config_css_bundle --include-path node_modules --importer ./node_modules/node-sass-import-once/index.js",
     "styles:autoprefixer": "postcss --use autoprefixer --autoprefixer.browsers '> 5%, ie >= 8' -r $npm_package_config_css_bundle/*.css",
     "styles:build": "npm run styles:sass && npm run styles:autoprefixer",
     "styles:watch": "npm run styles:sass -- -w",
@@ -49,6 +49,7 @@
     "babel-preset-react": "^6.3.13",
     "browser-sync": "^2.11.1",
     "node-sass": "^3.4.2",
+    "node-sass-import-once": "^1.2.0",
     "parallelshell": "^2.0.0",
     "postcss-cli": "^2.5.0",
     "webpack": "^1.12.12"
