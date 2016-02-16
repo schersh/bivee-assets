@@ -65,8 +65,8 @@ $layout-widths: (
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: $gutter-outside;
-    padding-right: $gutter-outside;
+    padding-left: $l-margin--wide;
+    padding-right: $l-margin--wide;
 }
 
     // narrow & wide versions of the layout wrapper

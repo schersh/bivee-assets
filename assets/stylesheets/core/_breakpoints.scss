@@ -43,6 +43,35 @@ $breakpoints: (
     // @debug map-get($breakpoints, $size);
 }
 
+// @mixin breakpoint-classes($class) {
+//     @each $breakpoint, $size in $breakpoints {
+//         &\@#{$breakpoint} {
+//             li, dt, dd {
+//                 display: block;
+//                 margin-right: 0;
+//             }
+
+//             @include media(">#{$breakpoint}") { @include l-list-inline; }
+//         }
+//     }
+// }
+
+// // Hugo Giraudel's breakpointify helper, lightly modified
+// // -> http://www.sassmeister.com/gist/83886e5822bdaa7bd113
+// // 
+// // Helper mixin to create suffixed modifiers of a class
+// // to make it effective starting certain breakpoints.
+// // @param {String} $class - Class to “breakpointify”
+// @mixin breakpointify($class) {
+//   #{$class} { @content; }
+  
+//   @each $name, $value in $breakpoints {
+//     @include media(">#{$name}") {
+//       #{$class}\@#{$name} { @content; }
+//     }
+//   }
+// }
+
 /* Utility classes
 // -------------------------------------------------------------------------- */
 
